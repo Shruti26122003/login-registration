@@ -1,10 +1,25 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const employessschema = new mongoose.Schema({
-    name: String,
-    email:String,
-    password: String
-})
+// Define employee schema with validations
+const employeeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
+});
 
-const employessModel1 = mongoose.model("employess",employessschema)
-module.exports = employessModel1
+// Define model for the employees collection
+const EmployeeModel = mongoose.model("Employee", employeeSchema);
+
+module.exports = EmployeeModel;
