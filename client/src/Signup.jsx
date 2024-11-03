@@ -14,7 +14,7 @@ function Signup() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission logic
-        axios.post('http://localhost:3001/register', { name, email, password })
+        axios.post('http://localhost:3002/register', { name, email, password })
             .then(result => {
                 console.log(result);
                 // Use navigate to redirect

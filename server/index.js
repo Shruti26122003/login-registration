@@ -2,19 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
-const EmployeeModel = require('./models/Employess'); 
+const EmployeeModel = require('./models/Employess'); // Ensure the model name matches
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 mongoose.set('debug', true); 
-mongoose.connect("mongodb://127.0.0.1:27017/employess/employesses")
+mongoose.connect("mongodb://127.0.0.1:27017/employees")
     .then(() => console.log("Connected to MongoDB"))
     .catch((error) => console.error("Connection error:", error));
 
-
-    app.post('/register', async (req, res) => {
+app.post('/register', async (req, res) => {
     try {
         const { name, email, password } = req.body;
         console.log("Received registration data:", req.body);
@@ -44,6 +43,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/employess/employesses")
 });
 
 // Start server
-app.listen(3001, () => {
-    console.log("Server is running on port 3001");
+app.listen(3002, () => {
+    console.log("Server is running on port 3002");
 });
